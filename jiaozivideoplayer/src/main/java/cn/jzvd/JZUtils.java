@@ -85,13 +85,18 @@ public class JZUtils {
     }
 
     public static void setRequestedOrientation(Context context, int orientation) {
-        if (JZUtils.getAppCompActivity(context) != null) {
-            JZUtils.getAppCompActivity(context).setRequestedOrientation(
-                    orientation);
-        } else {
-            JZUtils.scanForActivity(context).setRequestedOrientation(
-                    orientation);
+        try {
+            if (JZUtils.getAppCompActivity(context) != null) {
+                JZUtils.getAppCompActivity(context).setRequestedOrientation(
+                        orientation);
+            } else {
+                JZUtils.scanForActivity(context).setRequestedOrientation(
+                        orientation);
+            }
+        }catch (Exception exception){
+
         }
+
     }
 
     public static Window getWindow(Context context) {
